@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node --es-module-specifier-resolution=node app.js"
+    "start": "node --es-module-specifier-resolution=node app.js",
+    "dev": "nodemon --es-module-specifier-resolution=node app.js"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,9 @@
   "homepage": "https://github.com/rameshrrl/tweetsDeleter#readme",
   "dependencies": {
     "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "mongoose": "^6.0.12"
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }

@@ -1,7 +1,7 @@
 import { makeRequest } from '../helpers/makeRequest';
 
 export const getUserId = async (req, res) => {
-    const username = '';
+    const username = process.env.TWITTER_USER_NAME;
     const options =  {
         method: 'GET',
         headers: {'Authorization': process.env.BEARER_TOKEN }

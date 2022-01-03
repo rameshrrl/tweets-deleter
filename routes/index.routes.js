@@ -1,7 +1,7 @@
 import express from 'express';
 const applicationRouter = express.Router();
-import { deleteTweets } from '../controllers/tweetDelete.controller';
+import { getUserId } from '../controllers/getUserId.controller';
 
-applicationRouter.use('/', deleteTweets);
+applicationRouter.use('/', getUserId);
 
 export { applicationRouter };

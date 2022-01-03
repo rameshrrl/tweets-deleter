@@ -1,13 +1,13 @@
 import fetch from 'node-fetch';
-const token = process.env.BEARER_TOKEN;
-
 
 export const makeRequest = async (url, options) => {
 
-    const response = await fetch(url, {
-        method: options.method,
-        headers: {'Authorization': token }
-    });
+    const params = {}
+    params.method = options.method;
+    params.headers = options.headers;
 
-    return await response.json();
+    if(options.method === 'POST' || options.method === 'PUT') params.body = options.body;
+
+    const response = await fetch(url, params);
+    return response.json();
 }

@@ -11,7 +11,7 @@ export const getUserTweets = async () => {
         method: 'GET',
         headers: {'Authorization': process.env.BEARER_TOKEN }
     }
-    
+
     const response = await makeRequest(`https://api.twitter.com/2/users/${userId}/tweets`, options);
 
 }

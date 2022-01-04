@@ -14,4 +14,6 @@ export const getUserTweets = async () => {
 
     const response = await makeRequest(`https://api.twitter.com/2/users/${userId}/tweets`, options);
 
+    return response;
+
 }

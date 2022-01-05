@@ -1,12 +1,9 @@
 import { makeRequest } from '../helpers/makeRequest';
-import { getUserTweets } from './getUserTweets.controller';
 import { generateOAuthHeader } from '../helpers/generateOAuthHeader';
 
-export const deleteTweets = async() => {
-    const arrayOfTweetIDs = await getUserTweets();
+export const deleteTweet = async (tweetID) => {
 
     const HTTPMethod = 'DELETE';
-    let tweetID = '';
     const url = `https://api.twitter.com/2/tweets/${tweetID}`;
 
     const Authorization = await generateOAuthHeader(HTTPMethod, url)
@@ -17,5 +14,7 @@ export const deleteTweets = async() => {
     }
 
     const deleted = await makeRequest(url, options);
+
+    return deleted?.data?.deleted;
 
 }

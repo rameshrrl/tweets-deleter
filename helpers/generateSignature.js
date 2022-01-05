@@ -10,7 +10,7 @@ export const generateSignature = async (oAuthCredentials) => {
 
 }
 
-function oAuthBaseString(method, url, key, token, timestamp, nonce) {
+const oAuthBaseString = (method, url, key, token, timestamp, nonce) => {
     return method
         + '&' + percentEncode(url)
         + '&' + percentEncode(genSortedParamStr(key, token, timestamp, nonce));

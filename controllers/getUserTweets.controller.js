@@ -9,12 +9,18 @@ export const getUserTweets = async () => {
 
     if(!userId) {return;}
 
+    const url = `https://api.twitter.com/2/users/${userId}/tweets?max_results=100`;
+    
     const options =  {
         method: 'GET',
         headers: {'Authorization': process.env.BEARER_TOKEN }
     }
 
-    const response = await makeRequest(`https://api.twitter.com/2/users/${userId}/tweets?max_results=100`, options);
+    const response = await makeRequest(url, options);
+
+    response.data.forEach((tweet) => {
+        arrayOfTweetIDs.push(tweet.id)
+    });
 
     return arrayOfTweetIDs;
 

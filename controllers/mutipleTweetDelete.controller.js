@@ -24,6 +24,6 @@ export const deleteMultiplle = async () => {
             clearInterval(intervalId);
         }
 
-    }, 30000);
+    }, 19000);
 
 }

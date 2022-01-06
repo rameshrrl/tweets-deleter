@@ -18,9 +18,13 @@ export const getUserTweets = async () => {
 
     const response = await makeRequest(url, options);
 
-    response.data.forEach((tweet) => {
-        arrayOfTweetIDs.push(tweet.id)
-    });
+    if(response?.data?.length) {
+        response.data.forEach((tweet) => {
+            arrayOfTweetIDs.push(tweet.id)
+        });
+    } else {
+        console.log("Nothing to fetch!");
+    }
 
     return arrayOfTweetIDs;
 

@@ -5,6 +5,10 @@ export const deleteMultiplle = async () => {
 
     const arrayOfTweetIDs = await getUserTweets();
 
+    if(!arrayOfTweetIDs.length) {
+        return console.log('Nothing to Delete!');
+    }
+
     let intervalId = setInterval(async () => {
 
         if (arrayOfTweetIDs.length > 0) {

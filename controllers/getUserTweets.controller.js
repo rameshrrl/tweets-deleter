@@ -1,31 +1,38 @@
 import { makeRequest } from '../helpers/makeRequest';
 import { getUserId } from './getUserId.controller';
+import { generateOAuthHeader } from '../helpers/generateOAuthHeader';
 
 export const getUserTweets = async () => {
 
-    let arrayOfTweetIDs = [];
-
-    const userId = await getUserId();
-
-    if(!userId) {return;}
-
-    const url = `https://api.twitter.com/2/users/${userId}/tweets?max_results=100`;
+    try {
+        const userId = await getUserId();
     
-    const options =  {
-        method: 'GET',
-        headers: {'Authorization': process.env.BEARER_TOKEN }
+        if(!userId) throw new Error('User not found!');
+    
+        const HTTPMethod = 'GET';
+        const url = `https://api.twitter.com/2/users/${userId}/tweets`;
+    
+        const reqParams = {
+            max_results: 100
+        }
+    
+        const Authorization = await generateOAuthHeader(HTTPMethod, url, reqParams)
+
+        const options =  {
+            method: 'GET',
+            headers: {'Authorization': Authorization }
+        }
+    
+        const response = await makeRequest(`${url}?max_results=100`, options);
+    
+        if(response?.data?.length) {
+            return response?.data;
+        } else {
+            console.log("Nothing to fetch!");
+        }
+    
+    } catch (error) {
+        console.log(error);
     }
-
-    const response = await makeRequest(url, options);
-
-    if(response?.data?.length) {
-        response.data.forEach((tweet) => {
-            arrayOfTweetIDs.push(tweet.id)
-        });
-    } else {
-        console.log("Nothing to fetch!");
-    }
-
-    return arrayOfTweetIDs;
 
 }

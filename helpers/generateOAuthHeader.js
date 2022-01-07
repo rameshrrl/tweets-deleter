@@ -1,7 +1,7 @@
 import { generateNonce } from './generateNonce';
 import { generateSignature } from './generateSignature';
 
-export const generateOAuthHeader = async (HTTPMethod, url) => {
+export const generateOAuthHeader = async (HTTPMethod, url, reqParams = {}) => {
 
     const nonce = generateNonce();
     const timestamp = Math.round(Date.now() / 1000);
@@ -12,7 +12,7 @@ export const generateOAuthHeader = async (HTTPMethod, url) => {
     const oAuthSignatureMethod = 'HMAC-SHA1';
     const oAuthVersion = '1.0';
 
-    const signature = await generateSignature({HTTPMethod, url, nonce, timestamp, oAuthConsumer, oAuthToken, oAuthSignatureMethod, oAuthVersion, oAuthConsumerSecret, oAuthTokenSecret});
+    const signature = await generateSignature({HTTPMethod, url, reqParams, nonce, timestamp, oAuthConsumer, oAuthToken, oAuthSignatureMethod, oAuthVersion, oAuthConsumerSecret, oAuthTokenSecret});
 
     return `OAuth oauth_consumer_key="${oAuthConsumer}",oauth_nonce="${nonce}",oauth_signature="${signature}",oauth_signature_method="${oAuthSignatureMethod}",oauth_timestamp="${timestamp}",oauth_token="${oAuthToken}",oauth_version="${oAuthVersion}"`;
 

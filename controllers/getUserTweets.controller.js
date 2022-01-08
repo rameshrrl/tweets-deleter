@@ -11,7 +11,7 @@ export const getUserTweets = async () => {
     
         const deleteBefore = parseInt(process.env.DELETE_BEFORE) || 7;
         const end_time = givenDaysAgo(deleteBefore);
-        const max_results = 100;
+        const max_results = 5;
     
         const reqParams = {
             max_results,
@@ -19,6 +19,8 @@ export const getUserTweets = async () => {
         }
 
         const response = await getTweets(userId, reqParams);
+
+        return [];
     
         if(response?.data?.length) {
             return response?.data;

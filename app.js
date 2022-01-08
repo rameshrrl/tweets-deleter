@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from "dotenv";
-import { deleteMultiplle } from './controllers/mutipleTweetDelete.controller';
+import { deleteMultiple } from './controllers/mutipleTweetDelete.controller';
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -11,5 +11,5 @@ const port = process.env.PORT || 3000;
 
 app.listen(port,() => {
     console.log(`Sever Listening on PORT: ${port}`);
-    deleteMultiplle();
+    deleteMultiple();
 });

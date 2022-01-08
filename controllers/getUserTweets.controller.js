@@ -1,6 +1,7 @@
 import { makeRequest } from '../helpers/makeRequest';
 import { getUserId } from './getUserId.controller';
 import { generateOAuthHeader } from '../helpers/generateOAuthHeader';
+import { generateHTTPOptions } from '../helpers/generateHTTPOptions';
 
 export const getUserTweets = async () => {
 
@@ -16,12 +17,9 @@ export const getUserTweets = async () => {
             max_results: 100
         }
     
-        const Authorization = await generateOAuthHeader(HTTPMethod, url, reqParams)
+        const authorization = await generateOAuthHeader(HTTPMethod, url, reqParams);
 
-        const options =  {
-            method: 'GET',
-            headers: {'Authorization': Authorization }
-        }
+        const options = generateHTTPOptions(HTTPMethod, authorization);
     
         const response = await makeRequest(`${url}?max_results=100`, options);
     
@@ -29,6 +27,7 @@ export const getUserTweets = async () => {
             return response?.data;
         } else {
             console.log("Nothing to fetch!");
+            return [];
         }
     
     } catch (error) {

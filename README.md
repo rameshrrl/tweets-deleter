@@ -29,6 +29,8 @@ Head over to [Twitter developer portal](https://developer.twitter.com/en) and si
 
 After downloading the application code from **GitHub** you need to create a `.env` file in the root folder with the following credentials.
 
+**Note :** Provide username without *@* character. **Ex :** username is `@Twitter` then provide it as `Twitter`.
+
 ```javascript
 API_KEY="<YOUR_API_KEY>"
 API_KEY_SECRET="<YOUR_API_KEY_SECRET>"

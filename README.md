@@ -14,6 +14,7 @@ This application was developed using Twitter's latest `Version 2 API` to delete 
 ## Features
 
 :heart: **Developed with the latest Twitter API (Version 2)!**<br />
+:heart: **Fully Authenticated with OAuth!**<br />
 :heart: **Runs based on Twitter API Call Limits!**<br />
 :heart: **Promise based!**<br />
 :heart: **ES6 and above standard javascript!**<br />
@@ -33,7 +34,6 @@ API_KEY="<YOUR_API_KEY>"
 API_KEY_SECRET="<YOUR_API_KEY_SECRET>"
 ACCESS_TOKEN="<YOUR_ACCESS_TOKEN>"
 ACCESS_TOKEN_SECRET="<YOUR_ACCESS_TOKEN_SECRET>"
-BEARER_TOKEN="Bearer <YOUR_BEARER_TOKEN>"
 TWITTER_USER_NAME="<YOUR_TWITTER_USER_NAME>"
 ```
 ## Deleting Tweets

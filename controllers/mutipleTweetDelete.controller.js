@@ -10,6 +10,8 @@ export const deleteMultiple = async () => {
         if(!arrayOfTweets.length) {
             return console.log('Nothing to Delete!');
         }
+
+        console.log(`${arrayOfTweets.length} tweets found! Deleting process initiated...`);
     
         let intervalId = setInterval(async () => {
     

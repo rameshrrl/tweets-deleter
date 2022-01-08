@@ -1,7 +1,6 @@
-import { makeRequest } from '../helpers/makeRequest';
 import { getUserId } from './getUserId.controller';
-import { generateOAuthHeader } from '../helpers/generateOAuthHeader';
-import { generateHTTPOptions } from '../helpers/generateHTTPOptions';
+import { givenDaysAgo } from '../helpers/givenDaysAgo';
+import { getTweets } from './getTweets.controller';
 
 export const getUserTweets = async () => {
 
@@ -10,18 +9,16 @@ export const getUserTweets = async () => {
     
         if(!userId) throw new Error('User not found!');
     
-        const HTTPMethod = 'GET';
-        const url = `https://api.twitter.com/2/users/${userId}/tweets`;
+        const deleteBefore = parseInt(process.env.DELETE_BEFORE) || 7;
+        const end_time = givenDaysAgo(deleteBefore);
+        const max_results = 100;
     
         const reqParams = {
-            max_results: 100
+            max_results,
+            end_time
         }
-    
-        const authorization = await generateOAuthHeader(HTTPMethod, url, reqParams);
 
-        const options = generateHTTPOptions(HTTPMethod, authorization);
-    
-        const response = await makeRequest(`${url}?max_results=100`, options);
+        const response = await getTweets(userId, reqParams);
     
         if(response?.data?.length) {
             return response?.data;

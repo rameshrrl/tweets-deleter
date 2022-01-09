@@ -18,14 +18,9 @@ export const getUserTweets = async () => {
             end_time
         }
 
-        const response = await getTweets(userId, reqParams);
-    
-        if(response?.data?.length) {
-            return response?.data;
-        } else {
-            console.log("Nothing to fetch!");
-            return [];
-        }
+        const arrayOfTweets = await getTweets(userId, reqParams);
+
+        return arrayOfTweets;
     
     } catch (error) {
         console.log(error);

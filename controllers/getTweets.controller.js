@@ -5,18 +5,43 @@ import { generateURLWithRequestQuery } from '../helpers/generateRequestQuery';
 
 export const getTweets = async (userId, reqParams) => {
 
+    let arrayOfTweets = [];
+
     const HTTPMethod = 'GET';
 
-    let url = `https://api.twitter.com/2/users/${userId}/tweets`;
+    const baseURL = `https://api.twitter.com/2/users/${userId}/tweets`;
 
-    const authorization = await generateOAuthHeader(HTTPMethod, url, reqParams);
+    let callAgain = false;
 
-    const options = generateHTTPOptions(HTTPMethod, authorization);
+    console.log('Trying to fetch tweets....');
 
-    url = generateURLWithRequestQuery(url, reqParams);
+    do {
 
-    const response = await makeRequest(url, options);
+        if(arrayOfTweets.length) {
+            console.log(`Fetched ${arrayOfTweets.length} tweets...`);
+        }
 
-    return response;
+        const authorization = await generateOAuthHeader(HTTPMethod, baseURL, reqParams);
+
+        const options = generateHTTPOptions(HTTPMethod, authorization);
+    
+        let url = generateURLWithRequestQuery(baseURL, reqParams);
+    
+        const response = await makeRequest(url, options);
+
+        if(response?.data?.length) {
+            arrayOfTweets = [...arrayOfTweets,...response.data]
+        }
+
+        if(response?.meta?.next_token) {
+            reqParams.pagination_token = response.meta.next_token;
+            callAgain = true;
+        } else {
+            callAgain = false;
+        }
+
+    } while(callAgain)
+
+    return arrayOfTweets;
 
 }

@@ -24,7 +24,7 @@ export const deleteMultiple = async () => {
                 let deletedTweet = arrayOfTweets.shift();
     
                 console.log(`Deleted ${deletedTweet.text}`);
-                console.log(`-----------------------------`);
+                console.log(`---------------------------------------------------------------------------------------`);
                 
             } else {
     

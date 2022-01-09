@@ -52,7 +52,7 @@ All set! Now you're ready to delete tweets. Now run the following script and it 
 npm run start
 ```
 
-**Note :** Twitter will allow you to perform **50** API calls per **15 Minutes**. So the application will delete tweets in a particular time interval to incorporate the limits provided by twitter. Also restart the server once the message shows `Tweests deleted successfully!`.
+**Note :** Twitter will allow you to perform **50** API calls per **15 Minutes**. So the application will delete tweets in a particular time interval to incorporate the limits provided by twitter. Twitter will return the most recent **3200** tweets only that matches given parameters for each cycle.
 
 ## License
 

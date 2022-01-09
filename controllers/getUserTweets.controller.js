@@ -11,23 +11,16 @@ export const getUserTweets = async () => {
     
         const deleteBefore = parseInt(process.env.DELETE_BEFORE) || 7;
         const end_time = givenDaysAgo(deleteBefore);
-        const max_results = 5;
+        const max_results = 100;
     
         const reqParams = {
             max_results,
             end_time
         }
 
-        const response = await getTweets(userId, reqParams);
+        const arrayOfTweets = await getTweets(userId, reqParams);
 
-        return [];
-    
-        if(response?.data?.length) {
-            return response?.data;
-        } else {
-            console.log("Nothing to fetch!");
-            return [];
-        }
+        return arrayOfTweets;
     
     } catch (error) {
         console.log(error);

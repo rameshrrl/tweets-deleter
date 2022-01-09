@@ -9,22 +9,28 @@ export const getTweets = async (userId, reqParams) => {
 
     const HTTPMethod = 'GET';
 
-    let url = `https://api.twitter.com/2/users/${userId}/tweets`;
+    const baseURL = `https://api.twitter.com/2/users/${userId}/tweets`;
 
     let callAgain = false;
 
+    console.log('Trying to fetch tweets....');
+
     do {
 
-        const authorization = await generateOAuthHeader(HTTPMethod, url, reqParams);
+        if(arrayOfTweets.length) {
+            console.log(`Fetched ${arrayOfTweets.length} tweets...`);
+        }
+
+        const authorization = await generateOAuthHeader(HTTPMethod, baseURL, reqParams);
 
         const options = generateHTTPOptions(HTTPMethod, authorization);
     
-        url = generateURLWithRequestQuery(url, reqParams);
+        let url = generateURLWithRequestQuery(baseURL, reqParams);
     
         const response = await makeRequest(url, options);
 
         if(response?.data?.length) {
-            arrayOfTweets = [...response.data]
+            arrayOfTweets = [...arrayOfTweets,...response.data]
         }
 
         if(response?.meta?.next_token) {

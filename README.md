@@ -8,6 +8,7 @@ This application was developed using Twitter's latest `Version 2 API` to delete 
 - [Get Started](#get-started)
 - [Authentication](#authentication)
 - [Deleting Tweets](#deleting-tweets)
+- [Schedule Delete](#schedule-delete)
 - [License](#license)
 - [Contribute](#contribute)
 
@@ -53,6 +54,10 @@ npm run start
 ```
 
 **Note :** Twitter will allow you to perform **50** API calls per **15 Minutes**. So the application will delete tweets in a particular time interval to incorporate the limits provided by twitter. Twitter will return the most recent **3200** tweets only that matches given parameters for each cycle.
+
+## Schedule Delete
+
+This application includes the `Cron Job` facility. Scheduled for every **8** hours.
 
 ## License
 

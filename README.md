@@ -57,7 +57,7 @@ npm run start
 
 ## Schedule Delete
 
-This application includes the `Cron Job` facility. Scheduled for every **8** hours.
+This application includes the `Cron Job` facility. Scheduled for every **1** hour.
 
 ## License
 

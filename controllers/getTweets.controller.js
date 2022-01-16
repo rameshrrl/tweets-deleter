@@ -2,6 +2,7 @@ import { makeRequest } from '../helpers/makeRequest';
 import { generateOAuthHeader } from '../helpers/generateOAuthHeader';
 import { generateHTTPOptions } from '../helpers/generateHTTPOptions';
 import { generateURLWithRequestQuery } from '../helpers/generateRequestQuery';
+import { TwitterV2BaseURL } from '../helpers/twitterBaseURL';
 
 export const getTweets = async (userId, reqParams) => {
 
@@ -9,7 +10,7 @@ export const getTweets = async (userId, reqParams) => {
 
     const HTTPMethod = 'GET';
 
-    const baseURL = `https://api.twitter.com/2/users/${userId}/tweets`;
+    const baseURL = `${TwitterV2BaseURL}/users/${userId}/tweets`;
 
     let callAgain = false;
 

@@ -1,7 +1,7 @@
 import { getUserTweets } from './getUserTweets.controller';
 import { deleteTweet } from './deleteTweet.controller';
 
-export const deleteMultiple = async () => {
+export const scheduleDelete = async () => {
 
     try {
 

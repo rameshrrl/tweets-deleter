@@ -9,6 +9,7 @@ import { unknownRoute } from "../helpers/unknownRoutes";
 
 const upload = multer({ storage: storage });
 
+applicationRouter.get('/', unknownRoute);
 applicationRouter.get('/schedule-delete', scheduleDelete);
 applicationRouter.post('/delete-all', upload.single('file'), deleteAll);
 applicationRouter.use(unknownRoute);

@@ -1,15 +1,19 @@
 import { getUserTweets } from './getUserTweets.controller';
-import { deleteTweet } from './deleteTweet.controller';
+import { deleteSingleTweet } from './deleteTweet.controller';
+import { generateResponse } from '../helpers/response';
 
-export const scheduleDelete = async () => {
+export const scheduleDelete = async (req, res) => {
 
     try {
 
         const arrayOfTweets = await getUserTweets();
 
         if(!arrayOfTweets.length) {
-            return console.log('Nothing to Delete!');
+            console.log('Nothing to Delete!')
+            return res.status(200).send(generateResponse('Nothing to Delete!', true))
         }
+
+        res.status(200).send(generateResponse(`${arrayOfTweets.length} tweets found! Deleting process initiated...`, true));
 
         console.log(`${arrayOfTweets.length} tweets found! Deleting process initiated...`);
     
@@ -17,7 +21,7 @@ export const scheduleDelete = async () => {
     
             if (arrayOfTweets.length > 0) {
                 
-                const deleted = await deleteTweet(arrayOfTweets[0].id);
+                const deleted = await deleteSingleTweet(arrayOfTweets[0].id);
     
                 if(!deleted) throw new Error('Tweet Deletion Failed!');
     
@@ -37,6 +41,7 @@ export const scheduleDelete = async () => {
 
     } catch (error) {
         console.log(error);
+        res.status(500).send(generateResponse('Error in configuring schedule delete!'));
     }
 
 }

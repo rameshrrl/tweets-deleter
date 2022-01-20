@@ -3,7 +3,7 @@ import { generateOAuthHeader } from '../helpers/generateOAuthHeader';
 import { generateHTTPOptions } from '../helpers/generateHTTPOptions';
 import { TwitterV2BaseURL } from '../helpers/twitterBaseURL';
 
-export const deleteTweet = async (tweetID) => {
+export const deleteSingleTweet = async (tweetID) => {
 
     const HTTPMethod = 'DELETE';
     const url = `${TwitterV2BaseURL}/tweets/${tweetID}`;

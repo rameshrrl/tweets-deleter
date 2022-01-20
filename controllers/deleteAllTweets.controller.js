@@ -8,7 +8,14 @@ export const deleteAll = async (req, res) => {
         
         const TweetData = await readFile(req.file.path, 'utf-8');
 
-        const tweetsArray = [];
+        let tweetsArray = JSON.parse(TweetData);
+
+        tweetsArray = tweetsArray.map((element) => {
+            return {
+                id: element.tweet.id,
+                text: element.tweet.full_text
+            }
+        });
     
         if(!tweetsArray.length) {
             console.log('Nothing to Delete!')

@@ -1,7 +1,31 @@
 import { readFile } from 'fs/promises';
+import { invokeDelete } from './invokeDelete.controller';
+import { generateResponse } from '../helpers/response';
 
 export const deleteAll = async (req, res) => {
 
-    const data = await readFile(req.file.path);
+    try {
+        
+        const TweetData = await readFile(req.file.path, 'utf-8');
+
+        const tweetsArray = [];
     
+        if(!tweetsArray.length) {
+            console.log('Nothing to Delete!')
+            return res.status(200).send(generateResponse('Nothing to Delete!', true))
+        }
+    
+        res.status(200).send(generateResponse(`${tweetsArray.length} tweets found! Deleting process initiated...`, true));
+    
+        const deleted = await invokeDelete(tweetsArray);
+    
+        if(deleted) console.log('Tweets Deleted Successfully!');
+
+    } catch (error) {
+
+        console.log(error);
+        res.status(500).send(generateResponse('Error in deleting tweets!'));
+
+    }
+
 }

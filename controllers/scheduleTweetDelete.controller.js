@@ -1,6 +1,6 @@
 import { getUserTweets } from './getUserTweets.controller';
-import { deleteSingleTweet } from './deleteTweet.controller';
 import { generateResponse } from '../helpers/response';
+import { invokeDelete } from './invokeDelete.controller';
 
 export const scheduleDelete = async (req, res) => {
 
@@ -16,28 +16,10 @@ export const scheduleDelete = async (req, res) => {
         res.status(200).send(generateResponse(`${arrayOfTweets.length} tweets found! Deleting process initiated...`, true));
 
         console.log(`${arrayOfTweets.length} tweets found! Deleting process initiated...`);
-    
-        let intervalId = setInterval(async () => {
-    
-            if (arrayOfTweets.length > 0) {
-                
-                const deleted = await deleteSingleTweet(arrayOfTweets[0].id);
-    
-                if(!deleted) throw new Error('Tweet Deletion Failed!');
-    
-                let deletedTweet = arrayOfTweets.shift();
-    
-                console.log(`Deleted ${deletedTweet.text}`);
-                console.log(`---------------------------------------------------------------------------------------`);
-                
-            } else {
-    
-                console.log('Tweets Deleted Successfully!');
-    
-                clearInterval(intervalId);
-            }
-    
-        }, 19000);
+
+        const deleted = await invokeDelete(arrayOfTweets);
+
+        if(deleted) console.log('Tweets Deleted Successfully!');    
 
     } catch (error) {
         console.log(error);

@@ -1,6 +1,4 @@
+export const deleteAll = async (req, res) => {
 
-export const deleteAll = async () => {
-
-    console.log(req.file, req.body)
     
 }

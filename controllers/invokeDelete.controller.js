@@ -1,6 +1,7 @@
 import { deleteSingleTweet } from './deleteTweet.controller';
+import { logDeleted } from '../helpers/logDeleted';
 
-export const invokeDelete = async (arrayOfTweets) => {
+export const invokeDelete = async (arrayOfTweets, isDeleteAll) => {
 
     let intervalId = setInterval(async () => {
     
@@ -13,6 +14,9 @@ export const invokeDelete = async (arrayOfTweets) => {
             let deletedTweet = arrayOfTweets.shift();
 
             console.log(`Deleted ${deletedTweet.text}`);
+            if(isDeleteAll) {
+                logDeleted(deleted.id);
+            }
             console.log(`---------------------------------------------------------------------------------------`);
             
         } else {

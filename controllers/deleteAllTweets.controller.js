@@ -23,8 +23,10 @@ export const deleteAll = async (req, res) => {
         }
     
         res.status(200).send(generateResponse(`${tweetsArray.length} tweets found! Deleting process initiated...`, true));
+
+        const isDeleteAll = true;
     
-        const deleted = await invokeDelete(tweetsArray);
+        const deleted = await invokeDelete(tweetsArray, isDeleteAll);
     
         if(deleted) console.log('Tweets Deleted Successfully!');
 

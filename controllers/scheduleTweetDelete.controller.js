@@ -8,6 +8,8 @@ export const scheduleDelete = async (req, res) => {
 
         const arrayOfTweets = await getUserTweets();
 
+        const isDeleteAll = false;
+
         if(!arrayOfTweets.length) {
             console.log('Nothing to Delete!')
             return res.status(200).send(generateResponse('Nothing to Delete!', true))
@@ -17,7 +19,7 @@ export const scheduleDelete = async (req, res) => {
 
         console.log(`${arrayOfTweets.length} tweets found! Deleting process initiated...`);
 
-        const deleted = await invokeDelete(arrayOfTweets);
+        const deleted = await invokeDelete(arrayOfTweets, isDeleteAll);
 
         if(deleted) console.log('Tweets Deleted Successfully!');    
 

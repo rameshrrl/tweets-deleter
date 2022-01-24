@@ -9,6 +9,8 @@ This application was developed using Twitter's latest `Version 2 API` to delete 
 - [Authentication](#authentication)
 - [Deleting Tweets](#deleting-tweets)
 - [Schedule Delete](#schedule-delete)
+- [Delete All Tweets](#delete-all-tweets)
+- [Logs](#logs)
 - [License](#license)
 - [Contribute](#contribute)
 
@@ -53,11 +55,35 @@ All set! Now you're ready to delete tweets. Now run the following script and it 
 npm run start
 ```
 
-**Note :** Twitter will allow you to perform **50** API calls per **15 Minutes**. So the application will delete tweets in a particular time interval to incorporate the limits provided by twitter. Twitter will return the most recent **3200** tweets only that matches given parameters for each cycle.
-
 ## Schedule Delete
 
-This application includes the `Cron Job` facility. Scheduled for every **1** hour.
+This application includes the `Cron Job` facility. Scheduled for every **1** hour. Just by calling this URL, you can schedule your tweet to delete without any extra effort.
+
+```console
+GET {{baseURL}}/schedule-delete
+```
+
+**Note :** Twitter will allow you to perform **50** API calls per **15 Minutes**. So the application will delete tweets in a particular time interval to incorporate the limits provided by twitter. Twitter will return the most recent **3200** tweets only that matches given parameters for each cycle.
+
+## Delete All Tweets
+
+Yes! This application can delete all your tweets. To delete all your tweets you must request your archived data from Twitter. [How to download your Twitter archive?](https://help.twitter.com/en/managing-your-account/accessing-your-twitter-data)
+
+After downloading your archive, extract it. Then inside the `data` folder, you can find a file called `tweet.js`. Open `tweet.js` file, remove the default array name something starts like `window...` and leave the `array` untouched. Now use the same file and call the API with the key name called `file` with the `tweet.js` file from any API client. Now the deleting process is initiated.
+
+```console
+POST {{baseURL}}/delete-all
+```
+
+**Note :** Based on the tweet count deleting can take days or weeks. Because we follow all the limits to delete all the things for free.
+
+## Logs
+
+In some cases, you may have to delete thousands of even lakhs of tweets. In any factor interrupting the delete all process, you can't perform the same operation again with the same file. So to back that situation, You can see the logs, find the final ID that got deleted and remove those objects from the array of the `tweet.js` file. Now, redo the delete all tweets process with the edited `tweet.js` file.
+
+```console
+GET {{baseURL}}/show-logs
+```
 
 ## License
 

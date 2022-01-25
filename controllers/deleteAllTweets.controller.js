@@ -1,21 +1,12 @@
-import { readFile } from 'fs/promises';
 import { invokeDelete } from './invokeDelete.controller';
 import { generateResponse } from '../helpers/response';
+import { readTweets } from '../helpers/readTweets';
 
-export const deleteAll = async (req, res) => {
+export const deleteAllTweets = async (req, res) => {
 
     try {
-        
-        const TweetData = await readFile(req.file.path, 'utf-8');
 
-        let tweetsArray = JSON.parse(TweetData);
-
-        tweetsArray = tweetsArray.map((element) => {
-            return {
-                id: element.tweet.id,
-                text: element.tweet.full_text
-            }
-        });
+        const tweetsArray = await readTweets(req.file.path);
     
         if(!tweetsArray.length) {
             console.log('Nothing to Delete!')

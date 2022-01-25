@@ -79,7 +79,7 @@ POST {{baseURL}}/delete-all
 
 ## Logs
 
-In some cases, you may have to delete thousands of even lakhs of tweets. In any factor interrupting the delete all process, you can't perform the same operation again with the same file. So to back that situation, You can see the logs, find the final ID that got deleted and remove those objects from the array of the `tweet.js` file. Now, redo the delete all tweets process with the edited `tweet.js` file.
+In some cases, you may have to delete thousands or even lakhs of tweets. In any factor interrupting the delete all process, Don't worry we got you covered. Restart the server again it will start to delete where we left the process with the help of logs that were created while deleting.
 
 ```console
 GET {{baseURL}}/show-logs

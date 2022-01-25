@@ -1,10 +1,13 @@
 import { getUserTweets } from './getUserTweets.controller';
 import { generateResponse } from '../helpers/response';
 import { invokeDelete } from './invokeDelete.controller';
+import { scheduleDelete } from '../jobs/scheduleDelete';
 
-export const scheduleDelete = async (req, res) => {
+export const scheduleTweetDelete = async (req, res) => {
 
     try {
+
+        scheduleDelete.start();
 
         const arrayOfTweets = await getUserTweets();
 
@@ -19,9 +22,7 @@ export const scheduleDelete = async (req, res) => {
 
         console.log(`${arrayOfTweets.length} tweets found! Deleting process initiated...`);
 
-        const deleted = await invokeDelete(arrayOfTweets, isDeleteAll);
-
-        if(deleted) console.log('Tweets Deleted Successfully!');    
+        await invokeDelete(arrayOfTweets, isDeleteAll);
 
     } catch (error) {
         console.log(error);

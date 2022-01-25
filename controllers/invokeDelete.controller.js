@@ -21,10 +21,10 @@ export const invokeDelete = async (arrayOfTweets, isDeleteAll) => {
             
         } else {
 
+            console.log('Tweets Deleted Successfully!');
+
             clearInterval(intervalId);
             
-            return true;
-
         }
 
     }, 19000);

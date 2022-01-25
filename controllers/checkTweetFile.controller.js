@@ -22,7 +22,6 @@ export const checkTweets = async () => {
 
     const isDeleteAll = true;
     
-    const deleted = await invokeDelete(tweetsArray, isDeleteAll);
+    await invokeDelete(tweetsArray, isDeleteAll);
 
-    if(deleted) console.log('Tweets Deleted Successfully!');
 }

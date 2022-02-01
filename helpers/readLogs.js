@@ -1,6 +1,6 @@
 import { readFile } from 'fs/promises';
 
-export const ReadLogs = async () => {
+export const readLogs = async () => {
 
     const directory = './logs/log.txt'
 

@@ -1,11 +1,11 @@
 import { generateResponse } from '../helpers/response';
-import { ReadLogs } from '../helpers/readLogs';
+import { readLogs } from '../helpers/readLogs';
 
 export const showLogs = async (req, res) => {
 
     try {
 
-        const logs = await ReadLogs();
+        const logs = await readLogs();
 
         res.status(200).send(generateResponse('Logs generated successfully!', true, logs));
 

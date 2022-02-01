@@ -1,4 +1,4 @@
-import { ReadLogs } from '../helpers/readLogs';
+import { readLogs } from '../helpers/readLogs';
 import { readTweets } from '../helpers/readTweets';
 import { invokeDelete } from './invokeDelete.controller';
 
@@ -8,7 +8,7 @@ export const checkTweets = async () => {
 
     if(!tweetsArray?.length) return console.log('Nothing to delete!')
 
-    const logs = await ReadLogs();
+    const logs = await readLogs();
 
     if(!logs?.length) return console.log('No logs found!');
 

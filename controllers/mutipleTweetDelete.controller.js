@@ -11,6 +11,8 @@ export const deleteMultiple = async () => {
             return console.log('Nothing to Delete!');
         }
 
+        const timer = arrayOfTweets.length < 50 ? 2000 : 19000;
+
         console.log(`${arrayOfTweets.length} tweets found! Deleting process initiated...`);
     
         let intervalId = setInterval(async () => {
@@ -33,7 +35,7 @@ export const deleteMultiple = async () => {
                 clearInterval(intervalId);
             }
     
-        }, 19000);
+        }, timer);
 
     } catch (error) {
         console.log(error);

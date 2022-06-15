@@ -10,15 +10,13 @@ export const scheduleTweetDelete = async () => {
 
         const arrayOfTweets = await getUserTweets();
 
-        const isDeleteAll = false;
-
         if(!arrayOfTweets.length) {
             return console.log('Nothing to Delete!')
         }
 
         console.log(`${arrayOfTweets.length} tweets found! Deleting process initiated...`);
 
-        await invokeDelete(arrayOfTweets, isDeleteAll);
+        await invokeDelete(arrayOfTweets);
 
     } catch (error) {
         console.log(error);

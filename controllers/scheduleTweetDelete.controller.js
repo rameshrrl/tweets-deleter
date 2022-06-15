@@ -1,12 +1,9 @@
 import { getUserTweets } from './getUserTweets.controller';
 import { invokeDelete } from './invokeDelete.controller';
-import { scheduleDelete } from '../jobs/scheduleDelete';
 
 export const scheduleTweetDelete = async () => {
 
     try {
-
-        scheduleDelete.start();
 
         const arrayOfTweets = await getUserTweets();
 

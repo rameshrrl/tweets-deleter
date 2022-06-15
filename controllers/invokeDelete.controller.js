@@ -1,5 +1,4 @@
 import { deleteSingleTweet } from './deleteTweet.controller';
-import { logDeleted } from '../helpers/logDeleted';
 
 export const invokeDelete = async (arrayOfTweets, isDeleteAll) => {
 

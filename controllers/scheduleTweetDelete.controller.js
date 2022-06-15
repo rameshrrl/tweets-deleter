@@ -1,5 +1,4 @@
 import { getUserTweets } from './getUserTweets.controller';
-import { generateResponse } from '../helpers/response';
 import { invokeDelete } from './invokeDelete.controller';
 import { scheduleDelete } from '../jobs/scheduleDelete';
 

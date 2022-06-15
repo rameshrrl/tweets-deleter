@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import { applicationRouter } from './routes/index.routes';
-import { checkTweets } from './controllers/checkTweetFile.controller';
+import { scheduleDelete } from './jobs/scheduleDelete';
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));
@@ -13,6 +13,6 @@ const port = process.env.PORT || 3000;
 app.use('/', applicationRouter)
 
 app.listen(port,() => {
-    checkTweets();
+    scheduleDelete.start();
     console.log(`Sever Listening on PORT: ${port}`);
 });

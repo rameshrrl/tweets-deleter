@@ -3,6 +3,8 @@ import { logDeleted } from '../helpers/logDeleted';
 
 export const invokeDelete = async (arrayOfTweets, isDeleteAll) => {
 
+    const timer = arrayOfTweets.length < 50 ? 2000 : 19000;
+
     let intervalId = setInterval(async () => {
     
         if (arrayOfTweets.length > 0) {
@@ -27,6 +29,6 @@ export const invokeDelete = async (arrayOfTweets, isDeleteAll) => {
             
         }
 
-    }, 19000);
+    }, timer);
 
 }

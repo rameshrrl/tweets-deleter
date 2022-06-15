@@ -1,6 +1,6 @@
 import { deleteSingleTweet } from './deleteTweet.controller';
 
-export const invokeDelete = async (arrayOfTweets, isDeleteAll) => {
+export const invokeDelete = async (arrayOfTweets) => {
 
     const timer = arrayOfTweets.length < 50 ? 2000 : 19000;
 
@@ -15,9 +15,7 @@ export const invokeDelete = async (arrayOfTweets, isDeleteAll) => {
             let deletedTweet = arrayOfTweets.shift();
 
             console.log(`Deleted ${deletedTweet.text}`);
-            if(isDeleteAll) {
-                logDeleted(deleted.id);
-            }
+
             console.log(`---------------------------------------------------------------------------------------`);
             
         } else {

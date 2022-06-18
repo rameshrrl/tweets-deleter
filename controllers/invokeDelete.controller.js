@@ -15,7 +15,7 @@ export const invokeDelete = async (arrayOfTweets, isDeleteAll) => {
 
             console.log(`Deleted ${deletedTweet.text}`);
             if(isDeleteAll) {
-                logDeleted(deleted.id);
+                logDeleted(deletedTweet.id);
             }
             console.log(`---------------------------------------------------------------------------------------`);
             

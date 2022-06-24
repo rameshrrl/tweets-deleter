@@ -14,7 +14,7 @@ export const invokeDelete = async (arrayOfTweets) => {
 
             let deletedTweet = arrayOfTweets.shift();
 
-            console.log(`Deleted ${deletedTweet.text}`);
+            console.log(`Deleted :: ${deletedTweet.text}`);
 
             console.log(`---------------------------------------------------------------------------------------`);
             

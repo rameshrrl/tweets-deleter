@@ -7,11 +7,11 @@ export const invokeDelete = async (arrayOfTweets, isDeleteAll) => {
     
         if (arrayOfTweets.length > 0) {
             
-            const deleted = await deleteSingleTweet(arrayOfTweets[0].id);
+            const deleted = await deleteSingleTweet(arrayOfTweets[arrayOfTweets.length - 1].id);
 
             if(!deleted) throw new Error('Tweet Deletion Failed!');
 
-            let deletedTweet = arrayOfTweets.shift();
+            let deletedTweet = arrayOfTweets.pop();
 
             console.log(`Deleted ${deletedTweet.text}`);
             if(isDeleteAll) {

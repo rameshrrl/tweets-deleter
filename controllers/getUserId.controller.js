@@ -1,7 +1,7 @@
-import { makeRequest } from '../helpers/makeRequest';
-import { generateOAuthHeader } from '../helpers/generateOAuthHeader';
-import { generateHTTPOptions } from '../helpers/generateHTTPOptions';
-import { TwitterV2BaseURL } from '../helpers/twitterBaseURL';
+import { makeRequest } from '../helpers/makeRequest.js';
+import { generateOAuthHeader } from '../helpers/generateOAuthHeader.js';
+import { generateHTTPOptions } from '../helpers/generateHTTPOptions.js';
+import { TwitterV2BaseURL } from '../helpers/twitterBaseURL.js';
 
 export const getUserId = async () => {
     

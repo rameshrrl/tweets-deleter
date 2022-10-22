@@ -1,6 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { scheduleTweetDelete } from './controllers/scheduleTweetDelete.controller';
+import { scheduleTweetDelete } from './controllers/scheduleTweetDelete.controller.js';
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));

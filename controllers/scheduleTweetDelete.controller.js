@@ -1,5 +1,5 @@
-import { getUserTweets } from './getUserTweets.controller';
-import { invokeDelete } from './invokeDelete.controller';
+import { getUserTweets } from './getUserTweets.controller.js';
+import { invokeDelete } from './invokeDelete.controller.js';
 
 export const scheduleTweetDelete = async () => {
 

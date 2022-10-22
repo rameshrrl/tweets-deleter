@@ -1,6 +1,6 @@
-import { readLogs } from '../helpers/readLogs';
-import { readTweets } from '../helpers/readTweets';
-import { invokeDelete } from './invokeDelete.controller';
+import { readLogs } from '../helpers/readLogs.js';
+import { readTweets } from '../helpers/readTweets.js';
+import { invokeDelete } from './invokeDelete.controller.js';
 
 export const checkTweets = async () => {
 

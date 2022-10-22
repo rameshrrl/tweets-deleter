@@ -1,7 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { applicationRouter } from './routes/index.routes';
-import { checkTweets } from './controllers/checkTweetFile.controller';
+import { applicationRouter } from './routes/index.routes.js';
+import { checkTweets } from './controllers/checkTweetFile.controller.js';
 
 const app = express();
 app.use(express.urlencoded({ extended: true }));

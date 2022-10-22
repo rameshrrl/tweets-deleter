@@ -1,7 +1,7 @@
-import { getUserTweets } from './getUserTweets.controller';
-import { generateResponse } from '../helpers/response';
-import { invokeDelete } from './invokeDelete.controller';
-import { scheduleDelete } from '../jobs/scheduleDelete';
+import { getUserTweets } from './getUserTweets.controller.js';
+import { generateResponse } from '../helpers/response.js';
+import { invokeDelete } from './invokeDelete.controller.js';
+import { scheduleDelete } from '../jobs/scheduleDelete.js';
 
 export const scheduleTweetDelete = async (req, res) => {
 

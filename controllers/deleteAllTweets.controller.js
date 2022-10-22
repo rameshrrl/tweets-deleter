@@ -1,6 +1,6 @@
-import { invokeDelete } from './invokeDelete.controller';
-import { generateResponse } from '../helpers/response';
-import { readTweets } from '../helpers/readTweets';
+import { invokeDelete } from './invokeDelete.controller.js';
+import { generateResponse } from '../helpers/response.js';
+import { readTweets } from '../helpers/readTweets.js';
 
 export const deleteAllTweets = async (req, res) => {
 

@@ -1,5 +1,5 @@
-import { deleteSingleTweet } from './deleteTweet.controller';
-import { logDeleted } from '../helpers/logDeleted';
+import { deleteSingleTweet } from './deleteTweet.controller.js';
+import { logDeleted } from '../helpers/logDeleted.js';
 
 export const invokeDelete = async (arrayOfTweets, isDeleteAll) => {
 
@@ -13,7 +13,7 @@ export const invokeDelete = async (arrayOfTweets, isDeleteAll) => {
 
             let deletedTweet = arrayOfTweets.pop();
 
-            console.log(`Deleted ${deletedTweet.text}`);
+            console.log(`Deleted : ${deletedTweet.text}`);
             if(isDeleteAll) {
                 logDeleted(deletedTweet.id);
             }

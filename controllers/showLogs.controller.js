@@ -1,5 +1,5 @@
-import { generateResponse } from '../helpers/response';
-import { readLogs } from '../helpers/readLogs';
+import { generateResponse } from '../helpers/response.js';
+import { readLogs } from '../helpers/readLogs.js';
 
 export const showLogs = async (req, res) => {
 

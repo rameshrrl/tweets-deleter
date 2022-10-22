@@ -1,5 +1,5 @@
-import { generateNonce } from './generateNonce';
-import { generateSignature } from './generateSignature';
+import { generateNonce } from './generateNonce.js';
+import { generateSignature } from './generateSignature.js';
 
 export const generateOAuthHeader = async (HTTPMethod, url, reqParams = {}) => {
 

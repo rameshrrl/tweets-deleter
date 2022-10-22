@@ -1,6 +1,6 @@
-import { getUserId } from './getUserId.controller';
-import { givenDaysAgo } from '../helpers/givenDaysAgo';
-import { getTweets } from './getTweets.controller';
+import { getUserId } from './getUserId.controller.js';
+import { givenDaysAgo } from '../helpers/givenDaysAgo.js';
+import { getTweets } from './getTweets.controller.js';
 
 export const getUserTweets = async () => {
 

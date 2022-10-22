@@ -1,4 +1,4 @@
-import { deleteSingleTweet } from './deleteTweet.controller';
+import { deleteSingleTweet } from './deleteTweet.controller.js';
 
 export const invokeDelete = async (arrayOfTweets) => {
 

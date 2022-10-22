@@ -12,14 +12,16 @@ export const readTweets = async (path) => {
     const index = tweetData.indexOf('[');
     tweetData = tweetData.slice(index);
 
-    let tweetsArray = JSON.parse(tweetData);
+    let parsedData = JSON.parse(tweetData);
 
-    tweetsArray = tweetsArray.map((element) => {
-        return {
+    const tweetsArray = [];
+
+    for (const element of parsedData) {
+        tweetsArray.push({
             id: element.tweet.id,
             text: element.tweet.full_text
-        }
-    });
+        })
+    }
 
     return tweetsArray;
 }

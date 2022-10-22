@@ -69,7 +69,7 @@ GET {{baseURL}}/schedule-delete
 
 Yes! This application can delete all your tweets. To delete all your tweets you must request your archived data from Twitter. [How to download your Twitter archive?](https://help.twitter.com/en/managing-your-account/accessing-your-twitter-data)
 
-After downloading your archive, extract it. Then inside the `data` folder, you can find a file called `tweet.js`. Open `tweet.js` file, remove the default array name something starts like `window...` and leave the `array` untouched. Now use the same file and call the API with the key name called `file` with the `tweet.js` file from any API client. Now the deleting process is initiated.
+After downloading your archive, extract it. Then inside the `data` folder, you can find a file called `tweet.js`. Use the same file and call the API with the key name called `file` from any API client. Now the deleting process is initiated.
 
 ```console
 POST {{baseURL}}/delete-all

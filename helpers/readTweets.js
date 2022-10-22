@@ -7,9 +7,12 @@ export const readTweets = async (path) => {
         return console.log(`${path} not found!`)
     }
 
-    const TweetData = await readFile(path, 'utf-8');
+    let tweetData = await readFile(path, 'utf-8');
 
-    let tweetsArray = JSON.parse(TweetData);
+    const index = tweetData.indexOf('[');
+    tweetData = tweetData.slice(index);
+
+    let tweetsArray = JSON.parse(tweetData);
 
     tweetsArray = tweetsArray.map((element) => {
         return {

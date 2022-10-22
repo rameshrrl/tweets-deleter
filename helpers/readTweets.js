@@ -10,9 +10,10 @@ export const readTweets = async (path) => {
     let tweetData = await readFile(path, 'utf-8');
 
     const index = tweetData.indexOf('[');
+    
     tweetData = tweetData.slice(index);
 
-    let parsedData = JSON.parse(tweetData);
+    const parsedData = JSON.parse(tweetData);
 
     const tweetsArray = [];
 
